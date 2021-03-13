@@ -7,8 +7,8 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, './public/index.html')
-    })
+      template: path.join(__dirname, './public/index.html'),
+    }),
   ],
   module: {
     rules: [
@@ -17,9 +17,9 @@ const config: Configuration = {
         exclude: '/node_modules/',
         use: {
           loader: 'swc-loader',
-        }
+        },
       },
-    ]
+    ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
@@ -27,7 +27,7 @@ const config: Configuration = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
-    clean: true
+    clean: true,
   },
 };
 
