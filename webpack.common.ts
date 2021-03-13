@@ -5,10 +5,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const isProductionMode = process.env.NODE_ENV === 'production';
 
-if (process.env.NODE_ENV === 'production') {
-  console.log('SUCCESS');
-}
-
 const config: Configuration = {
   entry: './src/index.tsx',
   plugins: [
