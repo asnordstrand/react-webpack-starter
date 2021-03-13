@@ -1,6 +1,13 @@
 import * as path from 'path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
+const isProductionMode = process.env.NODE_ENV === 'production';
+
+if (process.env.NODE_ENV === 'production') {
+  console.log('SUCCESS');
+}
 
 const config: Configuration = {
   entry: './src/index.tsx',
@@ -18,6 +25,26 @@ const config: Configuration = {
         use: {
           loader: 'swc-loader',
         },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          isProductionMode ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['postcss-preset-env', {}]],
+              },
+            },
+          },
+        ],
       },
     ],
   },
