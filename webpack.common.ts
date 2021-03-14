@@ -9,6 +9,7 @@ const config: Configuration = {
   entry: './src/index.tsx',
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: './public/favicon.ico',
       filename: 'index.html',
       template: path.join(__dirname, './public/index.html'),
     }),
@@ -41,6 +42,10 @@ const config: Configuration = {
             },
           },
         ],
+      },
+      {
+        test: /\.svg$/,
+        type: 'asset/resource',
       },
     ],
   },
